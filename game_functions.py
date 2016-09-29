@@ -58,8 +58,8 @@ def check_events(ai_settings, screen, ship, bullets):
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
-    """Update images on the screen and flip to the new screen"""
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
+    # Update images on the screen and flip to the new screen
     # redraw the screen during each pass through the loop
     screen.fill(ai_settings.bg_color)
     ship.blitme()
@@ -68,8 +68,15 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
     for bullet in bullets.sprites():
         bullet.draw_bullet()
 
+    # draw the play button if the game is inactive
+    if not stats.game_Active:
+        play_button.draw_button()
+
+    # make the most recently drawn screen visible
+    pygame.display.flip()
+
 def update_bullets(ai_settings, screen, ship, aliens, bullets):
-    """Update position of bullets and get rid of old bullets"""
+    # Update position of bullets and get rid of old bullets
     # update bullet position
     bullets.update()
 
@@ -78,9 +85,6 @@ def update_bullets(ai_settings, screen, ship, aliens, bullets):
         if bullet in bullets.copy():
             if bullet.rect.bottom <= 0:
                 bullets.remove(bullet)
-
-    # make the most recently drawn screen visible
-    pygame.display.flip()
 
     check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
 
