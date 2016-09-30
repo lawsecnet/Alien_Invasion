@@ -69,7 +69,7 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
         bullet.draw_bullet()
 
     # draw the play button if the game is inactive
-    if not stats.game_Active:
+    if not stats.game_active:
         play_button.draw_button()
 
     # make the most recently drawn screen visible
