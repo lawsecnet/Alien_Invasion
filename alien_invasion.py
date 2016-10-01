@@ -28,7 +28,6 @@ def run_game():
     bullets = Group()
     aliens = Group()
 
-    bg_color = (254, 254, 254)
 
     # create the fleet of aliens
     gf.create_fleet(ai_settings, screen, ship, aliens)
