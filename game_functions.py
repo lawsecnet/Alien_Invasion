@@ -50,7 +50,7 @@ def check_keyup_events(event, ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
-        ship.moving_right = False
+        ship.moving_left = False
 
 def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets):
     # Respond to keypresses and mouse events

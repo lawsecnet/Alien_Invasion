@@ -29,17 +29,17 @@ class Ship(Sprite):
         """Update the ship's position based on movement flag"""
         # update the ship's center value, not the rect
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.rect.centerx += self.ai_settings.ship_speed_factor
+            self.center += self.ai_settings.ship_speed_factor
         if self.moving_left and self.rect.left > 0:
-            self.rect.centerx -= self.ai_settings.ship_speed_factor
+            self.center -= self.ai_settings.ship_speed_factor
 
         # update rect object from self.centerx
         self.rect.centerx = self.center
 
     def blitme(self):
-        """Draw the ship at its current location"""
+        # Draw the ship at its current location
         self.screen.blit(self.image, self.rect)
 
     def center_ship(self):
-        """center the ship on the screen"""
+        # center the ship on the screen
         self.center = self.screen_rect.centerx
